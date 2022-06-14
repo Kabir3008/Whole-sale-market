@@ -1,0 +1,20 @@
+{
+  "name": "whole-sale-market",
+  "version": "1.0.0",
+  "description": "whole sale market using MERN",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "SET NODE_ENV=DEVELOPMENT& nodemon backend/server",
+    "prod": "SET NODE_ENV=PRODUCTION& nodemon backend/server"
+  },
+  "author": "Baktiar Kabir Joy",
+  "license": "ISC",
+  "dependencies": {
+    "cloudinary-core": "^2.12.3",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.3.6",
+    "nodemon": "^2.0.16"
+  }
+}
