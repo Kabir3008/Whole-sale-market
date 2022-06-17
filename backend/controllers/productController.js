@@ -1,6 +1,6 @@
 const Product = require('../models/product')
 
-//Create new product => /api/v1/product/next
+//Create new product => /api/v1/admin/product/next
 
 exports.newProduct= async(req,res,next) => {
     const product = await Product.create(req.body);
@@ -22,7 +22,7 @@ exports.getProducts = async(req, res, next) =>{
     })
 }
 
-// Get single product details => /api/v1/product/:id
+// Get single product details => /api/v1/admin/product/:id
 exports.getSingleProduct = async (req, res, next) => {
 
     const product = await Product.findById(req.params.id);
@@ -38,3 +38,28 @@ exports.getSingleProduct = async (req, res, next) => {
         product
     })
 }
+
+// Update Product   =>   /api/v1/admin/product/:id
+exports.updateProduct = async (req, res, next) => {
+
+    // must use 'let' before product.if you use "const" you will get type error
+    let product = await Product.findById(req.params.id);
+
+    if (!product) {
+        return res.status(404).json({
+            success:false,
+            message: 'Product not found'
+        })
+    }
+
+    product = await Product.findByIdAndUpdate(req.params.id, req.body, {
+        new:true,
+        runValidators:true,
+        useFindAndModify: false
+    });
+    res.status(200).json({
+        sucess:true,
+        product
+    })
+}
+    
