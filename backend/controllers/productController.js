@@ -1,55 +1,57 @@
 const Product = require('../models/product')
 
+const errorHandler = require('../utils/errorHandler');
+
+const catchAsyncErrors = require('../middlewares/catchAsyncErrors')
+const APIFeatures = require('../utils/apiFeatures')
+
 //Create new product => /api/v1/admin/product/next
 
-exports.newProduct= async(req,res,next) => {
+exports.newProduct= catchAsyncErrors (async(req,res,next) => {
+    
     const product = await Product.create(req.body);
 
     res.status(201).json({
         success:true,
         product
     })  
-}
+})
 
 //get all products => /api/v1/products
-exports.getProducts = async(req, res, next) =>{
-    const products = await Product.find();
+exports.getProducts = catchAsyncErrors (async(req, res, next) =>{
+    const apiFeatures = new APIFeatures(Product.find(), req.query).search()
+    const products = await apiFeatures.query;
     res.status(200).json({
         
         sucess: true,
         count:products.length,
         products
     })
-}
+})
 
 // Get single product details => /api/v1/admin/product/:id
-exports.getSingleProduct = async (req, res, next) => {
+exports.getSingleProduct = catchAsyncErrors (async (req, res, next) => {
 
     const product = await Product.findById(req.params.id);
   
     if (!product) {
-        return res.status(404).json({
-        success: false,
-        message: 'Product not found'
-        })
+        return next(new errorHandler('Product not found',404))
+        
     }
     res.status(200).json({
         success:true,
         product
     })
-}
+})
 
 // Update Product   =>   /api/v1/admin/product/:id
-exports.updateProduct = async (req, res, next) => {
+exports.updateProduct = catchAsyncErrors (async (req, res, next) => {
 
     // must use 'let' before product.if you use "const" you will get type error
     let product = await Product.findById(req.params.id);
 
     if (!product) {
-        return res.status(404).json({
-            success:false,
-            message: 'Product not found'
-        })
+        return next(new errorHandler('Product not found',404))
     }
 
     product = await Product.findByIdAndUpdate(req.params.id, req.body, {
@@ -61,19 +63,16 @@ exports.updateProduct = async (req, res, next) => {
         sucess:true,
         product
     })
-}
+})
 
 // delete Product   =>   /api/v1/admin/product/:id
-exports.deleteProduct = async (req, res, next) => {
+exports.deleteProduct = catchAsyncErrors (async (req, res, next) => {
 
     // must use 'let' before product.if you use "const" you will get type error
     let product = await Product.findById(req.params.id);
 
     if (!product) {
-        return res.status(404).json({
-            success:false,
-            message: 'Product not found'
-        })
+        return next(new errorHandler('Product not found',404))
     }
 
     await product.remove();
@@ -82,5 +81,5 @@ exports.deleteProduct = async (req, res, next) => {
         sucess:true,
         message:'Product is deleted'
     })
-}
+})
     
