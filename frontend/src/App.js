@@ -1,5 +1,5 @@
 // import './App.js'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./components/Home";
@@ -10,8 +10,13 @@ function App() {
         <Router>
             <div className="App">
                 <Header />
-                {/* <div className="container container-fluid"></div> */}
-                <Home />
+                <div className="container container-fluid">
+                    <Routes>
+                        <Route exact path="/" element={<Home />} />
+                    </Routes>
+                </div>
+
+
                 <Footer />
 
             </div>

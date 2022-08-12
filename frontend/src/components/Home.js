@@ -5,18 +5,18 @@ import MetaData from './layout/MetaData'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { getProducts } from '../actions/productActions'
-import product from './product/product'
-
+// import product from './product/product'
+// 
 const Home = () => {
     const dispatch = useDispatch();
-    const { loading, products, error, productsCount } = useSelector(state => state.products)
+    // const { loading, products, error, productsCount } = useSelector(state => state.products)
 
     useEffect(() => {
         dispatch(getProducts());
     }, [dispatch])
     return (
-        <div className="container container-fluid">
-            {/* <Fragment> */}
+
+        <Fragment>
             <MetaData title={'Buy Best Products Online'} />
             <h1 id="products_heading">Latest Products</h1>
             <section id="products" className="container mt-5">
@@ -139,7 +139,7 @@ const Home = () => {
                 </div>
             </section >
 
-        </div >
+        </Fragment>
     )
 }
 
