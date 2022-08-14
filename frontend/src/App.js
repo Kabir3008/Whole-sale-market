@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import ProductDetails from './components/product/ProductDetails';
 
 
+
 function App() {
     return (
         <Router>
@@ -14,6 +15,7 @@ function App() {
                 <div className="container container-fluid">
                     <Routes>
                         <Route exact path="/" element={<Home />} />
+                        <Route path="search/:keyword" element={<Home />} />
                         <Route exact path="/product/:id" element={<ProductDetails />} />
                     </Routes>
                 </div>

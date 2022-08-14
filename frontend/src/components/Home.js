@@ -9,12 +9,14 @@ import { getProducts } from '../actions/productActions'
 import Product from './product/Product'
 import Loader from './layout/Loader'
 import { useAlert } from 'react-alert'
+import { useParams } from "react-router-dom";
 
 const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const alert = useAlert();
     const dispatch = useDispatch();
     const { loading, products, error, productCount, resPerPage } = useSelector(state => state.products)
+    const { keyword } = useParams();
 
     useEffect(() => {
 
@@ -22,8 +24,8 @@ const Home = () => {
             // alert.success('Success')
             return alert.error(error)
         }
-        dispatch(getProducts(currentPage));
-    }, [dispatch, alert, error, currentPage])
+        dispatch(getProducts(keyword, currentPage));
+    }, [dispatch, alert, error, keyword, currentPage])
 
 
     function setCurrentPageNo(pageNumber) {
