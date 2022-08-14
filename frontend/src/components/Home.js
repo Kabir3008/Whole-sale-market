@@ -27,6 +27,7 @@ const Home = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [price, setPrice] = useState([1, 1000]);
     const [category, setCategory] = useState('');
+    const [rating, setRating] = useState(0);
     const categories = [
         'Electronics',
         'Cameras',
@@ -56,8 +57,8 @@ const Home = () => {
             // alert.success('Success')
             return alert.error(error)
         }
-        dispatch(getProducts(keyword, currentPage, price, category));
-    }, [dispatch, alert, error, keyword, price, category, currentPage])
+        dispatch(getProducts(keyword, currentPage, price, category, rating));
+    }, [dispatch, alert, error, keyword, price, category, rating, currentPage])
 
 
     function setCurrentPageNo(pageNumber) {
@@ -113,6 +114,38 @@ const Home = () => {
                                                             }
                                                         >
                                                             {category}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+
+                                            <hr className="my-3" />
+
+                                            <div className="mt-5">
+                                                <h4 className="mb-3">
+                                                    Ratings
+                                                </h4>
+
+                                                <ul className="pl-0">
+                                                    {[5, 4, 3, 2, 1].map(star => (
+                                                        <li
+                                                            style={{
+                                                                cursor: 'pointer',
+                                                                listStyleType: 'none'
+                                                            }}
+                                                            key={star}
+                                                            onClick={() => setRating(star)
+                                                            }
+                                                        >
+                                                            <div className="rating-outer">
+                                                                <div className="rating-inner"
+                                                                    style={{
+                                                                        width: `${star * 20}%`
+                                                                    }}
+                                                                >
+
+                                                                </div>
+                                                            </div>
                                                         </li>
                                                     ))}
                                                 </ul>
