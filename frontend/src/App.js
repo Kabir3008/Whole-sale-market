@@ -4,7 +4,7 @@ import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import Home from "./components/Home";
 import ProductDetails from './components/product/ProductDetails';
-
+import Cart from './components/cart/Cart';
 
 
 function App() {
@@ -17,6 +17,8 @@ function App() {
                         <Route exact path="/" element={<Home />} />
                         <Route path="search/:keyword" element={<Home />} />
                         <Route exact path="/product/:id" element={<ProductDetails />} />
+                        <Route exact path="/cart" element={<Cart />} />
+
                     </Routes>
                 </div>
 
