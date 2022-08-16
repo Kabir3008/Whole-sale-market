@@ -5,6 +5,7 @@ import Footer from "./components/layout/Footer";
 import Home from "./components/Home";
 import ProductDetails from './components/product/ProductDetails';
 import Cart from './components/cart/Cart';
+import Login from './components/user/Login';
 
 
 function App() {
@@ -17,6 +18,10 @@ function App() {
                         <Route exact path="/" element={<Home />} />
                         <Route path="search/:keyword" element={<Home />} />
                         <Route exact path="/product/:id" element={<ProductDetails />} />
+
+                        <Route path="login" element={<Login />} />
+
+
                         <Route exact path="/cart" element={<Cart />} />
 
                     </Routes>
