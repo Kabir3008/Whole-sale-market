@@ -1,46 +1,46 @@
 const mongoose = require('mongoose')
 
 const productSchema = new mongoose.Schema({
-    name:{
+    name: {
         type: String,
         required: [true, 'Please enter product name'],
-        trim:true,
-        maxLength: [100,'Product name cannot exceed 100 characters']
+        trim: true,
+        maxLength: [100, 'Product name cannot exceed 100 characters']
     },
-    price:{
+    price: {
         type: Number,
         required: [true, 'Please enter product price'],
-    
-        maxLength: [5,'Product price cannot exceed 5 characters'],
-        default:0.0 
+
+        maxLength: [5, 'Product price cannot exceed 5 characters'],
+        default: 0.0
     },
     description: {
         type: String,
         required: [true, 'Please enter product description'],
 
     },
-    ratings:{
+    ratings: {
         type: Number,
-        default:0
+        default: 0
 
     },
-    images:[
+    images: [
         {
-            public_id:{
+            public_id: {
                 type: String,
                 required: true
             },
-            url:{
+            url: {
                 type: String,
                 required: true
             },
         }
     ],
-    category:{
+    category: {
         type: String,
-        required: [true,'Please select category for this product'],
-        enum:{
-            values:[
+        required: [true, 'Please select category for this product'],
+        enum: {
+            values: [
                 'Electronics',
                 'Cameras',
                 'Laptops',
@@ -55,45 +55,50 @@ const productSchema = new mongoose.Schema({
                 'Food'
 
             ],
-            message:'Please select correct category for this product'
+            message: 'Please select correct category for this product'
         }
-        
-    },
-    seller:{ 
-        type: String,
-        required: [true,'Please enter product seller']
 
     },
-    stock:{
-        type:Number,
-        required: [true,'Please enter product stock'],
-        maxLength: [5,'Product price cannot exceed 5 characters'],
-        default:0 
+    seller: {
+        type: String,
+        required: [true, 'Please enter product seller']
+
     },
-    numOfReviews:{
-        type:Number,
-        default:0
+    stock: {
+        type: Number,
+        required: [true, 'Please enter product stock'],
+        maxLength: [5, 'Product price cannot exceed 5 characters'],
+        default: 0
     },
-    reviews:[
+    numOfReviews: {
+        type: Number,
+        default: 0
+    },
+    reviews: [
         {
-            name:{
-                type:String,
+            user: {
+                type: mongoose.Schema.ObjectId,
+                ref: 'user',
                 required: true
             },
-            ratings:{
-                type:Number,
+            name: {
+                type: String,
                 required: true
             },
-            comment:{
-                type:String,
-                required:true
+            rating: {
+                type: Number,
+                required: true
+            },
+            comment: {
+                type: String,
+                required: true
             }
         }
     ],
-    createdAt:{
+    createdAt: {
         type: Date,
         default: Date.now
     }
 })
 
-module.exports=mongoose.model('Product', productSchema);
+module.exports = mongoose.model('Product', productSchema);
