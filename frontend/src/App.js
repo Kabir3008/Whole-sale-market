@@ -1,4 +1,4 @@
-// import './App.js'
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
@@ -9,8 +9,28 @@ import Shipping from './components/cart/Shipping';
 import ConfirmOrder from './components/cart/ConfirmOrder';
 import Login from './components/user/Login';
 // import { isAuthenticated }
+import { loadUser } from './actions/userActions';
+import store from './store'
+
 
 function App() {
+
+    // TODO: add loading for the footer
+    // const { isAuthenticated, user, loading } = useSelector(state => state.auth)
+
+    // const [stripeApiKey, setStripeApiKey] = useState('');
+
+    useEffect(() => {
+        store.dispatch(loadUser())
+
+        // async function getStripeApiKey() {
+        //     const { data } = await axios.get('/api/v1/stripeapi');
+        //     setStripeApiKey(data.stripeApiKey);
+        // }
+
+        // getStripeApiKey();
+    }, [])
+
     return (
         <Router>
             <div className="App">
