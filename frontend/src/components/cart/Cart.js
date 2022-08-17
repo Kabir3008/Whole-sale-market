@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Loader from '../layout/Loader'
 import MetaData from '../layout/MetaData'
 import { useAlert } from 'react-alert'
@@ -10,6 +10,8 @@ import { addItemToCart, removeItemFromCart } from '../../actions/cartActions'
 
 const Cart = () => {
 
+
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { cartItems } = useSelector(state => state.cart);
 
@@ -32,6 +34,11 @@ const Cart = () => {
 
         dispatch(addItemToCart(id, newQty))
     }
+
+    const checkoutHandler = () => {
+        navigate('/shipping');
+    }
+
 
     return (
         <Fragment>
@@ -95,7 +102,7 @@ const Cart = () => {
 
                                 </p>
                                 <hr />
-                                <button id="checkout_btn" class="btn btn-primary btn-block">Check out</button>
+                                <button id="checkout_btn" className="btn btn-primary btn-block" onClick={checkoutHandler}>Check out</button>
                             </div>
                         </div>
                     </div>

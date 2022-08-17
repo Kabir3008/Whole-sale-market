@@ -5,8 +5,9 @@ import Footer from "./components/layout/Footer";
 import Home from "./components/Home";
 import ProductDetails from './components/product/ProductDetails';
 import Cart from './components/cart/Cart';
+import Shipping from './components/cart/Shipping';
 import Login from './components/user/Login';
-
+// import { isAuthenticated }
 
 function App() {
     return (
@@ -23,6 +24,8 @@ function App() {
 
 
                         <Route exact path="/cart" element={<Cart />} />
+
+                        <Route path="/shipping" element={<Shipping />} />
 
                     </Routes>
                 </div>
