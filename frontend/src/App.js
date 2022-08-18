@@ -9,8 +9,26 @@ import Shipping from './components/cart/Shipping';
 import ConfirmOrder from './components/cart/ConfirmOrder';
 import Login from './components/user/Login';
 // import { isAuthenticated }
+import { useSelector } from "react-redux";
+import { Navigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 function App() {
+    const { isAuthenticated, user, loading } = useSelector(state => state.auth)
+
+    // const [stripeApiKey, setStripeApiKey] = useState('');
+
+    useEffect(() => {
+        //   store.dispatch(loadUser())
+
+        //   async function getStripeApiKey() {
+        //     const { data } = await axios.get('/api/v1/stripeapi');
+        //     setStripeApiKey(data.stripeApiKey);
+        //   }
+
+        //   getStripeApiKey();
+    }, [])
+
     return (
         <Router>
             <div className="App">
@@ -26,9 +44,8 @@ function App() {
 
                         <Route exact path="/cart" element={<Cart />} />
 
-                        <Route path="/shipping" element={<Shipping />} />
-
-                        <Route path="/order/confirm" element={<ConfirmOrder />} />
+                        <Route path="/shipping" element={isAuthenticated ? (<Shipping />) : (<Navigate replace to="/login" />)} />
+                        <Route path="/order/confirm" element={isAuthenticated ? (<ConfirmOrder />) : (<Navigate replace to="/login" />)} />
 
                     </Routes>
                 </div>
