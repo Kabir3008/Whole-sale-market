@@ -9,8 +9,13 @@ import Shipping from './components/cart/Shipping';
 import ConfirmOrder from './components/cart/ConfirmOrder';
 import Login from './components/user/Login';
 // import { isAuthenticated }
+import { Navigate } from 'react-router-dom';
+import Payment from './components/cart/Payment';
+import { useSelector } from 'react-redux';
 
 function App() {
+
+    const { isAuthenticated, user, loading } = useSelector(state => state.auth)
     return (
         <Router>
             <div className="App">
