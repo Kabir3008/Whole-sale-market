@@ -28,6 +28,7 @@
     "react-js-pagination": "^3.0.2",
     "react-use-effect": "^0.0.1",
     "stringify": "^5.2.0",
+    "stripe": "^10.2.0",
     "use-effect-x": "^0.1.5",
     "validator": "^13.7.0"
   }

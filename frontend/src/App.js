@@ -12,6 +12,7 @@ import Login from './components/user/Login';
 import { useSelector } from "react-redux";
 import { Navigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Payment from './components/cart/Payment';
 
 function App() {
     const { isAuthenticated, user, loading } = useSelector(state => state.auth)
@@ -46,6 +47,7 @@ function App() {
 
                         <Route path="/shipping" element={isAuthenticated ? (<Shipping />) : (<Navigate replace to="/login" />)} />
                         <Route path="/order/confirm" element={isAuthenticated ? (<ConfirmOrder />) : (<Navigate replace to="/login" />)} />
+                        <Route path="/payment" element={isAuthenticated ? (<Payment />) : (<Navigate replace to="/login" />)} />
 
                     </Routes>
                 </div>
