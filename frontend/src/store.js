@@ -6,9 +6,11 @@ import { cartReducer } from "./reducers/cartReducers";
 import { authReducer } from "./reducers/userReducers";
 import { newOrderReducer } from "./reducers/orderReducers";
 
+
 import {
     productsReducer,
-    productDetailsReducer
+    productDetailsReducer,
+    newReviewReducer
 
 
 
@@ -23,7 +25,8 @@ const reducer = combineReducers({
     productDetails: productDetailsReducer,
     cart: cartReducer,
     auth: authReducer,
-    newOrder: newOrderReducer
+    newOrder: newOrderReducer,
+    newReview: newReviewReducer
 
 });
 
