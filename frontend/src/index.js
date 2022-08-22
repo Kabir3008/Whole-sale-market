@@ -15,6 +15,9 @@ const options = {
     transitions: transitions.SCALE
 }
 
+
+
+//aita diye mainly redux store ta open korechi
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <Provider store={store}>

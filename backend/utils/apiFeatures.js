@@ -1,20 +1,20 @@
-class APIFeatures{
-    constructor(query, queryStr){
+class APIFeatures {
+    constructor(query, queryStr) {  //product.find is the query and ja pass kortesi oita holo queryStr
         this.query = query;
         this.queryStr = queryStr;
     }
-    search(){
+    search() {
         const keyword = this.queryStr.keyword ? {
-            name:{
+            name: {
                 $regex: this.queryStr.keyword,
-                $options: `i`
-            }        
+                $options: `i`  //case insensitive
+            }
         } : {}
         console.log(keyword);
-        this.query=this.query.find({...keyword});
+        this.query = this.query.find({ ...keyword });
         return this;
     }
-    filter(){
+    filter() {
         const queryCopy = { ...this.queryStr };
 
         console.log(queryCopy);
@@ -30,12 +30,12 @@ class APIFeatures{
         console.log(queryStr)
 
         this.query = this.query.find(JSON.parse(queryStr));
-        return this; 
+        return this;
     }
-    pagination(resPerPage){
-        const currentPage = Number (this.queryStr.page) || 1;
-        const skip = resPerPage*(currentPage-1);
-        this.query= this.query.limit(resPerPage).skip(skip);
+    pagination(resPerPage) {
+        const currentPage = Number(this.queryStr.page) || 1;
+        const skip = resPerPage * (currentPage - 1);
+        this.query = this.query.limit(resPerPage).skip(skip);
         return this;
     }
 }

@@ -3,7 +3,7 @@ import { ADD_TO_CART, REMOVE_CART_ITEM, SAVE_SHIPPING_INFO } from '../constants/
 export const cartReducer = (state = { cartItems: [], shippingInfo: {} }, action) => {
     switch (action.type) {
         case ADD_TO_CART:
-            const item = action.payload;
+            const item = action.payload; //While action types allow you tell your reducer what action it should take, the payload is the data that your reducer will use to update the state.
             const isItemExists = state.cartItems.find(i => i.product === item.product)
 
             if (isItemExists) {

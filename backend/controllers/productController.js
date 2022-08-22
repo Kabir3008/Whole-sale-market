@@ -11,7 +11,7 @@ const ErroorHandler = require('../utils/errorHandler');
 
 exports.newProduct = catchAsyncErrors(async (req, res, next) => {
 
-    const product = await Product.create(req.body);
+    const product = await Product.create(req.body);  //The req. body object allows you to access data in a string or JSON object from the client side
 
     res.status(201).json({
         success: true,

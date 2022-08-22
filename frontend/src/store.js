@@ -30,6 +30,8 @@ const reducer = combineReducers({
 
 });
 
+
+//page on kolre ki thakbe.like cart on korle cart items dekhte para.The createStore method can accept an optional preloadedState value as its second argument.Reducers can also specify an initial value by looking for an incoming state argument that is undefined
 let initialState = {
     cart: {
         cartItems: localStorage.getItem("cartItems")
@@ -45,7 +47,7 @@ const middleware = [thunk];
 const store = createStore(
     reducer,
     initialState,
-    composeWithDevTools(applyMiddleware(...middleware))
+    composeWithDevTools(applyMiddleware(...middleware))  //redux er custom functionality baray
 );
 
 export default store;

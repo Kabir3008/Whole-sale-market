@@ -1,9 +1,12 @@
+//ek ek kore product na post kore sb product akbare post kora
+
+
 const Product = require('../models/product');
 const dotenv = require('dotenv');
 const connectDatabase = require('../config/database');
 
 const products = require('../data/products');
-const {connect} =require('mongoose');
+const { connect } = require('mongoose');
 
 // Setting dotenv file
 dotenv.config({ path: 'backend/config/config.env' })

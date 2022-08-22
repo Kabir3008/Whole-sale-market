@@ -1,3 +1,8 @@
+//Home page er component gulo
+
+
+
+
 // import React, { useEffect } from 'react'
 import React, { Fragment, useState, useEffect } from 'react'
 import Pagination from 'react-js-pagination'
@@ -16,7 +21,7 @@ import { useParams } from "react-router-dom";
 // const { createSliderWithTooltip } = Slider;
 // const Range = createSliderWithTooltip(Slider.Range);
 
-
+//kaj hocche price er slide ta ene deya
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 
@@ -71,9 +76,11 @@ const Home = () => {
 
             {loading ? <Loader /> : (
                 <Fragment>
+                    {/* page title */}
                     <MetaData title={'Buy Best Products Online'} />
                     <h1 id="products_heading">Latest Products</h1>
                     <section id="products" className="container mt-5">
+                        {/* keyword diye search koa,price er slider deya,catagory,rating define kora */}
                         <div className="row">
                             {keyword ? (
                                 <Fragment>
@@ -96,7 +103,7 @@ const Home = () => {
                                                 onChange={price => setPrice(price)}
                                             />
                                             <hr className="my-5" />
-
+                                            {/* categories part */}
                                             <div className="mt-5">
                                                 <h4 className="mb-3">
                                                     Categories

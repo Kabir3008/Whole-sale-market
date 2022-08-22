@@ -37,9 +37,9 @@ export const productsReducer = (state = { products: [] }, action) => {
             // case ADMIN_PRODUCTS_FAIL:
             return {
                 loading: false,
-                error: action.payload
+                error: action.payload  //error msg ta show korbe
             }
-
+        //When you clear errors, on reducer, you set error to null so the useSelector return null to the variable error and so the error.
         case CLEAR_ERRORS:
             return {
                 ...state,
